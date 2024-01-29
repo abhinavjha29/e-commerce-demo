@@ -1,0 +1,20 @@
+.header {
+  background-color: lightseagreen;
+}
+
+.li-content {
+  color: black;
+}
+
+.single-card {
+  text-align: center;
+}
+
+.card-container {
+  /* margin-left: 10rem; */
+  display: flex;
+}
+
+.card-holder {
+  margin-bottom: 10rem;
+}
