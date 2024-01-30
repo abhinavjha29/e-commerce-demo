@@ -1,4 +1,4 @@
-const Header = () => {
+const Header = ({ setSelectedTab }) => {
   return (
     <header className="d-flex justify-content-center py-3 header">
       <ul className="nav nav-pills">
@@ -28,6 +28,9 @@ const Header = () => {
             type="button"
             className="btn btn-danger position-relative"
             style={{ textAlign: "right" }}
+            onClick={() => {
+              setSelectedTab("cart");
+            }}
           >
             Cart
             <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">

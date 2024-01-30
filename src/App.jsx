@@ -6,14 +6,21 @@ import SingleItem from "./components/SingleItem";
 import Content from "./components/content";
 
 import Heading from "./components/heading";
+import Cart from "./components/overlay/cart";
+import { useState } from "react";
 
 function App() {
+  const [selectedTab, setSelectedTab] = useState("home");
+
   return (
     <>
-      <Header></Header>
+      <Header setSelectedTab={setSelectedTab}></Header>
       <main>
         <Heading></Heading>
         <Content></Content>
+        {selectedTab === "cart" && (
+          <Cart setSelectedTab={setSelectedTab}></Cart>
+        )}
       </main>
       <Footer></Footer>
     </>

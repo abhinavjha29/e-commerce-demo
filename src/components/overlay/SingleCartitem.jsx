@@ -1,0 +1,52 @@
+import { FaMinus } from "react-icons/fa6";
+import { FaPlus } from "react-icons/fa6";
+// import classes from "./Singlecartitems.module.css";
+
+const SingleCartItem = ({ imageUrl, title, price, quantity }) => {
+  return (
+    <>
+      <div className="card-rounded-2">
+        <div class="card-body w-380">
+          <div class="row d-flex justify-content-between align-items-center">
+            <div class="col-md-2 col-lg-2 col-xl-2">
+              <img
+                src={imageUrl}
+                class="img-fluid rounded-3"
+                alt="Cotton T-shirt"
+              />
+            </div>
+            <div class="col-md-3 col-lg-3 col-xl-3">
+              <p class="lead fw-normal mb-2">{title}</p>
+              <p>{price}</p>
+            </div>
+            <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+              <button class="btn btn-link px-2">
+                <FaMinus />
+              </button>
+
+              <input
+                type="text"
+                value={` x${quantity}`}
+                className="quant-input"
+                readOnly
+              />
+
+              <button class="btn btn-link px-2">
+                <FaPlus />
+              </button>
+            </div>
+            <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+              <h5 class="mb-0">{price}</h5>
+            </div>
+            <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+              <a href="#!" class="text-danger">
+                <i class="fas fa-trash fa-lg"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+export default SingleCartItem;

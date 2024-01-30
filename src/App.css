@@ -18,3 +18,10 @@
 .card-holder {
   margin-bottom: 10rem;
 }
+
+.quant-input {
+  width: 30px;
+}
+.cart-card {
+  max-width: 30rem;
+}
