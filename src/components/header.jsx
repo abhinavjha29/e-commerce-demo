@@ -1,4 +1,15 @@
+import { useContext } from "react";
+import ProductContext from "./store/product-context";
+
 const Header = ({ setSelectedTab }) => {
+  const productContext = useContext(ProductContext);
+  const product = productContext.items;
+  const totalQuantity = productContext.totalQuantity;
+  // let totalQuantity = 0;
+  // product.forEach((item)=>{
+  //   totalQuantity = totalQuantity+Number
+  // })
+  console.log(totalQuantity);
   return (
     <header className="d-flex justify-content-center py-3 header">
       <ul className="nav nav-pills">
@@ -34,7 +45,8 @@ const Header = ({ setSelectedTab }) => {
           >
             Cart
             <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-              3<span className="visually-hidden">unread messages</span>
+              {totalQuantity}
+              <span className="visually-hidden">unread messages</span>
             </span>
           </button>
         </div>

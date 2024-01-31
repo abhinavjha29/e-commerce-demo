@@ -8,12 +8,14 @@ import Content from "./components/content";
 import Heading from "./components/heading";
 import Cart from "./components/overlay/cart";
 import { useState } from "react";
+import ProductContext from "./components/store/product-context";
+import ProductProvider from "./components/store/product-provider";
 
 function App() {
   const [selectedTab, setSelectedTab] = useState("home");
 
   return (
-    <>
+    <ProductProvider>
       <Header setSelectedTab={setSelectedTab}></Header>
       <main>
         <Heading></Heading>
@@ -23,7 +25,7 @@ function App() {
         )}
       </main>
       <Footer></Footer>
-    </>
+    </ProductProvider>
   );
 }
 

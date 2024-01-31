@@ -1,8 +1,27 @@
+import { useContext } from "react";
 import { FaMinus } from "react-icons/fa6";
 import { FaPlus } from "react-icons/fa6";
+import { MdDelete } from "react-icons/md";
+import ProductContext from "../store/product-context";
+
 // import classes from "./Singlecartitems.module.css";
 
 const SingleCartItem = ({ imageUrl, title, price, quantity }) => {
+  const productContext = useContext(ProductContext);
+  const addQuantity = productContext.addQuantity;
+  const addItem = productContext.addItem;
+  const removeItem = productContext.removeItem;
+  const handleaddbtn = (e) => {
+    e.preventDefault();
+    addQuantity(1);
+    const item = { imageUrl, title, price, quantity };
+    addItem(item);
+  };
+  const handleRemovebtn = (e) => {
+    e.preventDefault();
+    console.log(1);
+    removeItem(title);
+  };
   return (
     <>
       <div className="card-rounded-2">
@@ -31,7 +50,10 @@ const SingleCartItem = ({ imageUrl, title, price, quantity }) => {
                 readOnly
               />
 
-              <button class="btn btn-link px-2">
+              <button
+                class="btn btn-link px-2"
+                onClick={(e) => handleaddbtn(e)}
+              >
                 <FaPlus />
               </button>
             </div>
@@ -40,7 +62,14 @@ const SingleCartItem = ({ imageUrl, title, price, quantity }) => {
             </div>
             <div class="col-md-1 col-lg-1 col-xl-1 text-end">
               <a href="#!" class="text-danger">
-                <i class="fas fa-trash fa-lg"></i>
+                <button
+                  className="btn-btn-danger"
+                  onClick={(e) => {
+                    handleRemovebtn(e);
+                  }}
+                >
+                  <MdDelete />
+                </button>
               </a>
             </div>
           </div>
