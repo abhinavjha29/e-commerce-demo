@@ -15,10 +15,8 @@ const ProductProvider = (props) => {
     });
     if (isAvail) {
       setProduct(updatedProduct);
-      handleTotalQuantity();
     } else {
       setProduct([...product, item]);
-      handleTotalQuantity();
     }
     // const filteredProduct = updatedProduct.filter(
     //   (items) => items.quantity > 0
@@ -30,9 +28,11 @@ const ProductProvider = (props) => {
   const addQuantity = (newQuantity) => {
     quantity = quantity + newQuantity;
     setQuantity(quantity);
-    handleTotalQuantity();
   };
-  const subQuantity = () => {};
+  const subQuantity = (newQuantity) => {
+    quantity = quantity - newQuantity;
+    setQuantity(quantity);
+  };
   const removeItemfromCart = (name) => {
     const updatedProduct = product.filter((item) => item.title !== name);
     let quantity = 0;
@@ -42,8 +42,8 @@ const ProductProvider = (props) => {
 
     setProduct(updatedProduct);
     setQuantity(quantity);
-    handleTotalQuantity();
   };
+  const totatAmount = () => {};
   const productsArr = [
     {
       title: "Colors",
@@ -86,18 +86,12 @@ const ProductProvider = (props) => {
     },
   ];
   let totalQuantity = 0;
-  const handleTotalQuantity = () => {
-    product.forEach((item) => {
-      totalQuantity = totalQuantity + Number(item.quantity);
-      console.log(totalQuantity);
-    });
-  };
 
   const itemContext = {
     items: product,
     totalQuantity: quantity,
     addQuantity: addQuantity,
-    subQuantity: () => {},
+    subQuantity: subQuantity,
     removeItem: removeItemfromCart,
     addItem: addItemtoCart,
     defaultItem: productsArr,

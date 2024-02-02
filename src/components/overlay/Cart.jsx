@@ -3,44 +3,14 @@ import Modal from "./Modal";
 import SingleCartItem from "./SingleCartitem";
 import { MdCurrencyRupee } from "react-icons/md";
 import ProductContext from "../store/product-context";
+import Order from "./order";
 const Cart = ({ setSelectedTab }) => {
   const productContext = useContext(ProductContext);
   const cartElements = productContext.items;
   console.log(cartElements);
-  // const cartElements = [
-  //   {
-  //     title: "Colors",
-
-  //     price: 100,
-
-  //     imageUrl:
-  //       "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-
-  //     quantity: 2,
-  //   },
-
-  //   {
-  //     title: "Black and white Colors",
-
-  //     price: 50,
-
-  //     imageUrl:
-  //       "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-
-  //     quantity: 3,
-  //   },
-
-  //   {
-  //     title: "Yellow and Black Colors",
-
-  //     price: 70,
-
-  //     imageUrl:
-  //       "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-
-  //     quantity: 1,
-  //   },
-  // ];
+  const totalAmount = cartElements.reduce((total, item) => {
+    return total + item.price * item.quantity;
+  }, 0);
   return (
     <Modal>
       <div class="col cart-card">
@@ -65,22 +35,23 @@ const Cart = ({ setSelectedTab }) => {
           ></SingleCartItem>
         ))}
         <div class="card">
-          <div class="card-body p-4 d-flex justify-content-between">
-            <button type="button" class="btn btn-warning btn-block">
-              Order
-            </button>
-            <p>
-              Total Amount <MdCurrencyRupee />
-              31
-            </p>
-            <button
-              type="button"
-              class="btn btn-danger btn-block float-right"
-              onClick={() => setSelectedTab("home")}
-            >
-              Close
-            </button>
-          </div>
+          {cartElements.length > 0 && (
+            <Order
+              totalAmount={totalAmount}
+              setSelectedTab={setSelectedTab}
+            ></Order>
+          )}
+          {cartElements.length === 0 && (
+            <>
+              <h2 className="empty">Cart is Empty</h2>
+              <button
+                className="btn btn-danger"
+                onClick={() => setSelectedTab("home")}
+              >
+                Close
+              </button>
+            </>
+          )}
         </div>
       </div>
     </Modal>

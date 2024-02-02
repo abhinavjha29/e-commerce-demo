@@ -1,14 +1,20 @@
 import { useContext } from "react";
 import ProductContext from "./store/product-context";
+import { Link, NavLink } from "react-router-dom";
 
 const Header = ({ setSelectedTab }) => {
   const productContext = useContext(ProductContext);
   const product = productContext.items;
-  const totalQuantity = productContext.totalQuantity;
-  // let totalQuantity = 0;
-  // product.forEach((item)=>{
-  //   totalQuantity = totalQuantity+Number
-  // })
+  // const totalQuantity = productContext.totalQuantity;
+  console.log(productContext, "product is");
+  let totalQuantity = 0;
+  if (product.length > 0) {
+    product.forEach((item) => {
+      console.log(item, "item is");
+      totalQuantity = totalQuantity + item.quantity;
+    });
+  }
+
   console.log(totalQuantity);
   return (
     <header className="d-flex justify-content-center py-3 header">
@@ -19,9 +25,9 @@ const Header = ({ setSelectedTab }) => {
           </a>
         </li>
         <li className="nav-item">
-          <a href="#" className="nav-link li-content">
-            Features
-          </a>
+          <Link to="/" className="nav-link li-content">
+            store
+          </Link>
         </li>
 
         <li className="nav-item">
@@ -30,9 +36,9 @@ const Header = ({ setSelectedTab }) => {
           </a>
         </li>
         <li className="nav-item">
-          <a href="#" className="nav-link li-content">
-            About
-          </a>
+          <NavLink to="/aboutus" className="nav-link li-content">
+            About Us
+          </NavLink>
         </li>
         <div className="text-end">
           <button

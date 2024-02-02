@@ -19,7 +19,7 @@ const SingleCartItem = ({ imageUrl, title, price, quantity }) => {
   };
   const handleRemovebtn = (e) => {
     e.preventDefault();
-    console.log(1);
+
     removeItem(title);
   };
   return (
