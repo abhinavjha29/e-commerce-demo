@@ -18,6 +18,7 @@ import {
 } from "react-router-dom";
 import AboutUs from "./components/pages/About-us";
 import Store from "./components/pages/Store";
+import SingleProductPage from "./components/SingleproductPage";
 
 function App() {
   //const [selectedTab, setSelectedTab] = useState("home");
@@ -30,6 +31,7 @@ function App() {
     <ProductProvider>
       <BrowserRouter>
         <Header setSelectedTab={setSelectedTab} />
+        <SingleProductPage></SingleProductPage>
         <Routes>
           <Route
             path="/"
